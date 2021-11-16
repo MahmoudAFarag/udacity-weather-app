@@ -1,0 +1,86 @@
+:root {
+  --color-header: #3f98f1;
+}
+
+/* Main Layout Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  line-height: 1;
+  font-weight: 400;
+}
+
+/* Header styles */
+.header {
+  height: 10vh;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-header);
+  color: #eee;
+}
+
+.header__logo {
+  height: 6rem;
+  width: 6rem;
+}
+
+.header__title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+/* Inputs' section styles */
+.input {
+  margin-top: 5rem;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.input__label {
+  font-size: 1.8rem;
+  margin: 0 3rem;
+}
+
+.input__field {
+  outline: none;
+  border: 3px #000 solid;
+  padding: 1rem 2rem;
+  font-family: inherit;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  transition: border 0.3s;
+}
+
+.input__field:focus,
+.input__field:active {
+  border: 3px var(--color-header) solid;
+}
+
+.btn__submit {
+  outline: none;
+  border: none;
+  margin-left: 2rem;
+  padding: 1rem 2rem;
+  font-size: 2rem;
+  border-radius: 5px;
+  background-color: var(--color-header);
+  color: #eee;
+  cursor: pointer;
+}
