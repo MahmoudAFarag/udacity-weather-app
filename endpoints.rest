@@ -1,1 +1,16 @@
+### WEATHER MAP ENDPOINT TEST WITH DUMMY ZIPCODE
 GET https://api.openweathermap.org/data/2.5/weather?zip=10002&appid=5db50372bcf66dc6c716330b027a9b2d
+
+### GET REQUEST FOR OUT SERVER
+GET http://localhost:3000
+
+### TEST POST REQUEST OF OUR CUSTOM SERVER
+POST http://localhost:3000/add HTTP/1.1
+Content-Type: "application/json"
+
+{
+    "temperature": "23.5",
+    "date": "23 November 2021",
+    "response": "Yea it will be good"
+}
+

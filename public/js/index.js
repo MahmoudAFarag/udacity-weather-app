@@ -59,7 +59,7 @@ inputsForm.addEventListener("submit", async (e) => {
 
   const data = await fetchWeather(e.target.zipCode.value);
 
-  if (data.message) {
+  if (!data.ok) {
     displayError(`${data.message} (USA CODES ONLY)`);
     throw new Error("Please enter a USA zip code");
   }
