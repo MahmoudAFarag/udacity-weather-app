@@ -21,7 +21,7 @@ async function fetchWeather(zipCode) {
 
     return data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 }
 
@@ -42,7 +42,7 @@ zipInput.addEventListener("input", (e) => {
   // Delay the if checking by setTimeout, is it more effecient or it doesn't matter?
   timeoutID = setTimeout(() => {
     if (
-      e.target.value <= 0 ||
+      e.target.value < 0 ||
       e.target.value.length < 5 ||
       e.target.value.length > 5
     ) {
@@ -54,6 +54,13 @@ zipInput.addEventListener("input", (e) => {
 });
 
 // Handle the form submition
-inputsForm.addEventListener("submit", (e) => {
+inputsForm.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  const data = await fetchWeather(e.target.zipCode.value);
+
+  if (data.message) {
+    displayError(`${data.message} (USA CODES ONLY)`);
+    throw new Error("Please enter a USA zip code");
+  }
 });
