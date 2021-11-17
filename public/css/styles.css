@@ -1,5 +1,6 @@
 :root {
   --color-header: #3f98f1;
+  --color-error: #ef9a9a;
 }
 
 /* Main Layout Styles */
@@ -42,6 +43,26 @@ body {
   letter-spacing: 1.2px;
 }
 
+/* Main Content styles */
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+/* Error message styles */
+.error {
+  display: none;
+  background-color: var(--color-error);
+  width: 100%;
+  text-align: center;
+  padding: 1rem 2rem;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 /* Inputs' section styles */
 .input {
   margin-top: 5rem;
@@ -59,9 +80,11 @@ body {
 }
 
 .input__field {
+  width: 80%;
   outline: none;
   border: 3px #000 solid;
   padding: 1rem 2rem;
+  text-align: center;
   font-family: inherit;
   font-size: 1.8rem;
   border-radius: 5px;

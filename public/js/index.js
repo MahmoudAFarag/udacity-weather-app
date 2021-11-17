@@ -1,20 +1,59 @@
-// Global variables
+// Global Variables
+const inputsForm = document.querySelector(".input");
+const zipInput = document.querySelector(".input__field");
+const errorMessage = document.querySelector(".error");
+
+// API variables
 const API_KEY = "5db50372bcf66dc6c716330b027a9b2d";
-const URL = `https://api.openweathermap.org/data/2.5/weather?zip=71601&appid=${API_KEY}`;
+
+/* HELPER FUNCTIONS */
 
 // Fetch data from the weather api using zip code
-// async function fetchWeather() {
-//   try {
-//     const response = await fetch(URL, {
-//       method: "GET",
-//     });
+async function fetchWeather(zipCode) {
+  const baseURL = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${API_KEY}`;
 
-//     const data = await response.json();
+  try {
+    const response = await fetch(baseURL, {
+      method: "GET",
+    });
 
-//     return data;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+    const data = await response.json();
 
-// fetchWeather().then((data) => console.log(data));
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Display error when conditions fail
+function displayError(message) {
+  errorMessage.textContent = message;
+  errorMessage.style.display = "block";
+}
+
+/* END OF HELPER FUNCTION */
+
+// Add live validation each time the user writes
+let timeoutID = 0;
+
+zipInput.addEventListener("input", (e) => {
+  clearTimeout(timeoutID);
+
+  // Delay the if checking by setTimeout, is it more effecient or it doesn't matter?
+  timeoutID = setTimeout(() => {
+    if (
+      e.target.value <= 0 ||
+      e.target.value.length < 5 ||
+      e.target.value.length > 5
+    ) {
+      displayError("Please enter a valid zip-code");
+    } else {
+      errorMessage.style.display = "none";
+    }
+  }, 1000);
+});
+
+// Handle the form submition
+inputsForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+});

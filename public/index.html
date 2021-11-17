@@ -28,26 +28,37 @@
     </header>
     <main class="main">
       <form class="input">
+        <div class="error"></div>
         <label for="zip-code" class="input__label">Enter your Zip Code:</label>
         <input
           type="number"
           required
-          placeholder="Enter your zipcode"
-          name="zip-code"
+          min="0"
+          max="99999"
+          placeholder="enter zip code here"
+          name="zipCode"
           class="input__field"
         />
+
         <label for="feeling-input" class="input__label"
           >How are you feeling today?</label
         >
         <textarea
-          name="feeling-input"
+          name="feelingInput"
+          id="feelings"
           cols="30"
           rows="10"
           class="input__field"
           required
         ></textarea>
-        <button type="submit" class="btn__submit">Submit</button>
+        <button type="submit" id="generate" class="btn__submit">Submit</button>
       </form>
+
+      <div id="entryHolder">
+        <div id="temp">Temp</div>
+        <div id="date">Date</div>
+        <div id="content">Content</div>
+      </div>
     </main>
     <script src="js/index.js"></script>
   </body>
