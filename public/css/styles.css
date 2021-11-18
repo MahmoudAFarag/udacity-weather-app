@@ -1,6 +1,7 @@
 :root {
-  --color-header: #3f98f1;
-  --color-error: #ef9a9a;
+  --color-header: linear-gradient(to right, #43cea2, #185a9d);
+  --color-error: red;
+  --color-border: #9e616b;
 }
 
 /* Main Layout Styles */
@@ -18,6 +19,7 @@ body {
   font-family: "Roboto", sans-serif;
   line-height: 1;
   font-weight: 400;
+  background: linear-gradient(to right, #2c3e50, #3498db);
 }
 
 /* Header styles */
@@ -27,8 +29,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--color-header);
-  color: #eee;
+  background: var(--color-header);
+  color: #fff;
 }
 
 .header__logo {
@@ -75,6 +77,8 @@ body {
 }
 
 .input__label {
+  color: #fff;
+  text-transform: uppercase;
   font-size: 1.8rem;
   margin: 0 3rem;
 }
@@ -93,9 +97,26 @@ body {
 
 .input__field:focus,
 .input__field:active {
-  border: 3px var(--color-header) solid;
+  border: 3px var(--color-border) solid;
 }
 
+/* Enteries section styles */
+#entryHolder {
+  background: linear-gradient(to bottom, #43cea2, #185a9d);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 70%;
+  height: 90%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content 1fr 1fr;
+}
+
+.icon {
+  grid-column: 1 / 3;
+  justify-self: center;
+}
+
+/* submit button styles */
 .btn__submit {
   outline: none;
   border: none;
@@ -103,7 +124,7 @@ body {
   padding: 1rem 2rem;
   font-size: 2rem;
   border-radius: 5px;
-  background-color: var(--color-header);
-  color: #eee;
+  background-color: #000;
+  color: #fff;
   cursor: pointer;
 }
