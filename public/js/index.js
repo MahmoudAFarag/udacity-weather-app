@@ -3,6 +3,13 @@ const inputsForm = document.querySelector(".input");
 const zipInput = document.querySelector(".input__field");
 const errorMessage = document.querySelector(".error");
 const feelingInput = document.querySelector("#feelings");
+const entryHolder = document.querySelector("#entryHolder");
+const weatherIcon = document.querySelector(".icon");
+const weatherPlace = document.querySelector(".place__city");
+const weatherDesc = document.querySelector(".place__description");
+const weatherDegree = document.querySelector(".degree");
+const weatherFeeling = document.querySelector(".feeling");
+const weatherDate = document.querySelector(".date");
 
 // API variables
 const API_KEY = "5db50372bcf66dc6c716330b027a9b2d";
@@ -66,6 +73,25 @@ function displayError(message) {
   errorMessage.style.display = "block";
 }
 
+function buildUI(temp, description, place, date, response, icon) {
+  // Setting the weather icon
+  // entryHolder.setAttribute("style", "visibility: visible; opacity: 1;");
+  weatherIcon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${icon}@4x.png`
+  );
+  // Setting the weather place
+  weatherPlace.textContent = place;
+  // Setting the weather description
+  weatherDesc.textContent = description;
+  // Setting the weather degree
+  weatherDegree.textContent = `${Math.round(temp)} \u00B0`;
+  // Setting the weather feeling
+  weatherFeeling.textContent = `Feeling: ${response}`;
+  // Setting the date
+  weatherDate.textContent = date;
+}
+
 /* END OF HELPER FUNCTION */
 
 // Add live validation each time the user writes
@@ -85,7 +111,7 @@ zipInput.addEventListener("input", (e) => {
     } else {
       errorMessage.style.display = "none";
     }
-  }, 1000);
+  }, 500);
 });
 
 // Handle the form submition
@@ -100,8 +126,6 @@ inputsForm.addEventListener("submit", async (e) => {
     throw new Error("Please enter a USA zip code");
   }
 
-  console.log(data);
-
   // Post the data to our local server
   await postWeather("/add", {
     temperature: data.main.temp,
@@ -113,6 +137,8 @@ inputsForm.addEventListener("submit", async (e) => {
   });
 
   // Get data from local server
-  const finalData = await getLocalWeather();
-  console.log(finalData);
+  const { temperature, description, place, date, response, icon } =
+    await getLocalWeather();
+
+  buildUI(temperature, description, place, date, response, icon);
 });
