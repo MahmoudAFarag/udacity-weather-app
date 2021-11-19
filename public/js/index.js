@@ -85,7 +85,7 @@ function buildUI(temp, description, place, date, response, icon) {
   // Setting the weather description
   weatherDesc.textContent = description;
   // Setting the weather degree
-  weatherDegree.textContent = `${Math.round(temp)} \u00B0`;
+  weatherDegree.innerHTML = `${Math.round(temp)} C&deg;`;
   // Setting the weather feeling
   weatherFeeling.textContent = `Feeling: ${response}`;
   // Setting the date

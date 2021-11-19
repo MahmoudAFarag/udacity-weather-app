@@ -45,12 +45,25 @@ body {
   letter-spacing: 1.2px;
 }
 
+@media screen and (max-width: 32em) {
+  .header__title {
+    font-size: 2rem;
+  }
+}
+
 /* Main Content styles */
 .main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
   align-items: center;
+}
+
+@media screen and (max-width: 50em) {
+  .main {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
 }
 
 /* Error message styles */
@@ -106,16 +119,29 @@ body {
   opacity: 0;
   background: linear-gradient(to bottom, #43cea2, #185a9d);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin: 4rem 0;
   color: #fff;
   font-weight: 700;
   width: 60%;
-  height: 90%;
+  height: 70vh;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, min-content) 20vh 1fr 1fr;
   align-items: center;
   justify-items: center;
   transition: all 0.5s;
+}
+
+@media screen and (max-width: 50em) {
+  #entryHolder {
+    height: 60vh;
+  }
+}
+
+@media screen and (max-width: 32em) {
+  #entryHolder {
+    width: 80%;
+  }
 }
 
 .icon {
