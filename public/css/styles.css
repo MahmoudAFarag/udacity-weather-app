@@ -108,7 +108,7 @@ body {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   color: #fff;
   font-weight: 700;
-  width: 70%;
+  width: 60%;
   height: 90%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);

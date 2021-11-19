@@ -75,7 +75,7 @@ function displayError(message) {
 
 function buildUI(temp, description, place, date, response, icon) {
   // Setting the weather icon
-  // entryHolder.setAttribute("style", "visibility: visible; opacity: 1;");
+  entryHolder.setAttribute("style", "visibility: visible; opacity: 1;");
   weatherIcon.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${icon}@4x.png`
