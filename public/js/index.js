@@ -73,23 +73,23 @@ function displayError(message) {
   errorMessage.style.display = "block";
 }
 
-function buildUI(temp, description, place, date, response, icon) {
+function buildUI(data) {
   // Setting the weather icon
   entryHolder.setAttribute("style", "visibility: visible; opacity: 1;");
   weatherIcon.setAttribute(
     "src",
-    `https://openweathermap.org/img/wn/${icon}@4x.png`
+    `https://openweathermap.org/img/wn/${data.icon}@4x.png`
   );
   // Setting the weather place
-  weatherPlace.textContent = place;
+  weatherPlace.textContent = data.place;
   // Setting the weather description
-  weatherDesc.textContent = description;
+  weatherDesc.textContent = data.description;
   // Setting the weather degree
-  weatherDegree.innerHTML = `${Math.round(temp)} C&deg;`;
+  weatherDegree.innerHTML = `${Math.round(data.temperature)} C&deg;`;
   // Setting the weather feeling
-  weatherFeeling.textContent = `Feeling: ${response}`;
+  weatherFeeling.textContent = `Feeling: ${data.response}`;
   // Setting the date
-  weatherDate.textContent = date;
+  weatherDate.textContent = data.date;
 }
 
 /* END OF HELPER FUNCTION */
@@ -137,8 +137,8 @@ inputsForm.addEventListener("submit", async (e) => {
   });
 
   // Get data from local server
-  const { temperature, description, place, date, response, icon } =
-    await getLocalWeather();
+  const finalData = await getLocalWeather();
 
-  buildUI(temperature, description, place, date, response, icon);
+  // Build the data card into the DOM
+  buildUI(finalData);
 });
